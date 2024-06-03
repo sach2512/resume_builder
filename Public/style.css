@@ -1,0 +1,327 @@
+.container {
+   max-width: 1600px;
+}
+
+* ::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #FBF6EE;
+    position: relative;
+    margin: 0;
+    min-height: 100%;
+}
+
+.navbar {
+    background-color: #FFB534 !important;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+
+/* css for main  */
+
+.main {
+    margin-top: 2rem;
+    width: 95vw;
+}
+
+.text_HighLight {
+   color: red;
+   font-weight: 500;
+}
+
+
+ /* css for footer  */
+.footer {
+    height: 45px;
+    background-color: #FFB534;
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    /* position: fixed; */
+    bottom: 0; 
+    width: 100%;
+    z-index: 100;
+}
+
+
+/* create resume btn css */
+.resume-btn {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+
+
+/* css for resume form */
+
+.form_heading {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: red;
+   border: 2px solid green;
+}
+
+.form_div {
+   display: flex;
+   justify-content: center;
+   margin: 30px 0;
+}
+
+form {
+    max-width: 850px;
+}
+
+
+
+/* css for resume */
+
+.resume_outer {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    border: 2px solid black;
+}
+
+.resume {
+   /* margin-top: 15px; */
+   border-radius: 10px;
+   background-color: white;
+   width: 80%;
+   padding: 50px 30px;
+}
+
+.resume_name {
+    /* text-align: center; */
+    font-weight: bold;
+    color: rgb(30, 180, 240);
+    font-size: 1.5rem;
+}
+
+.resume_email_no {
+    /* text-align: center; */
+    font-weight: 400;
+}
+
+.review_points {
+   color:rgb(30, 180, 240);
+}
+
+
+/* download btn */
+.download-btn {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin: 100px 0;
+}
+
+
+
+
+/* css for add more */
+
+.addmore_outer {
+    border: 0.5px solid red;
+    border-radius: 5px;
+    margin: 20px;
+    padding-left: 10px;
+}
+
+.addmore_text {
+    color: blue;
+    cursor: pointer;
+}
+
+
+/* css for delete */
+.fa-trash {
+   margin-left: 98%;
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+
+
+
+/* resume template */
+
+.template_outer {
+   min-height: 850px;
+}
+
+
+.resume_template {
+    background-color: white;
+    width: 85%; 
+    display: flex;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+@media(max-width: 700px) {
+    .resume_template {
+        width: 95%;
+    }
+}
+
+@media(max-width: 550px) {
+    .resume_template {
+        width: 99%;
+    }
+}
+
+.blue_sec {
+    height: 100%;
+    background: #003D73;
+    width: 25%;
+    padding: 1.2rem;
+}
+
+.white_sec {
+    height: 100%;
+    width: 75%;
+    padding: 20px;
+}
+
+
+.template_pic {
+    height: 12vw;
+    width: 12vw;
+    border-radius: 50%;
+    margin: 15px auto;
+}
+
+.template_pic img {
+    height: inherit;
+    width: inherit;
+    border-radius: 50%;
+}
+
+.template_name {
+   color: white;
+}
+
+.contact_sec {
+    margin-top: 20px;
+    color: white;
+}
+
+.contact_sec_heading {
+    height: 1.8rem;
+    padding-left: 8px;
+    background-color: #01305C;
+    margin-bottom: 15px;
+}
+
+.small_heading {
+    color: white;
+    font-weight: 500;
+    font-size: 1rem !important;
+}
+
+.small_heading_light {
+   font-weight: 200;
+}
+
+.white {
+    color: white;
+}
+
+.white_sec_heading {
+    color:  #01305C;
+}
+
+.white_sec_data {
+    /* border: 2px solid black; */
+    display: flex;
+    margin: 25px 0;
+}
+
+.white_sec_data_left {
+    /* border: 2px solid red; */
+    width: 15%;
+    font-weight: 500;
+    padding-right: 4px;
+}
+
+.white_sec_data_right {
+    width: 80%;
+    padding-left: 8px;
+    margin-left: 1rem;
+}
+
+
+@media print {
+    body {-webkit-print-color-adjust: exact;}
+
+    .footer, .download-btn , .navbar {
+        display: none;
+    }
+
+    .finalResume {
+        width: 100%;
+        margin: 0;
+    } 
+}
+
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+
+/* addResume page styling */
+
+.allResumes {
+    padding: 40px;
+}
+
+.card_resume {
+    height: 150px;
+    width: 350px;
+    background: white;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.card_resume_edit {
+    margin-top: 60px;
+    margin-left: 250px;
+}
+
+.allBtns {
+    height: 40px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 50px;
+}
+
+
+.space {
+    height: 100px;
+    /* background-color: red; */
+}
+
+
+
+
+
+

@@ -1,0 +1,145 @@
+<!-- nav Bar  -->
+<%- include("../Boilerplate/navbar.ejs") %>
+
+
+<div class="form_heading">
+  <% if(edit) { %>
+    <h2> Mention your Skills (Edit Mode)</h2>
+  <% } else { %>
+      <h2> Mention your Skills </h2>
+  <% } %>  
+</div>
+
+<div class="resume_outer">
+
+    <% if(!edit) { %>
+      <form action="/form5" class="row g-3 needs-validation" novalidate>
+    
+        <!-- Block started  -->
+        <div class="form4_div">
+          
+        </div>
+        <!-- block end -->
+
+
+    
+        <!-- passing data only -->
+        <% for(obj in object) { %>
+          <input type="text" style="display: none;" name="data[<%=obj%>]" value="<%=object[obj]%>">
+        <% } %>
+    
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit"> Next </button>
+        </div>
+     </form>
+    
+    <% } else { %>
+       
+      <form action="/form5" class="row g-3 needs-validation" novalidate>
+    
+        <!-- Block started  -->
+        <div class="form4_div">
+            <% let skills = resumeData.skills[0].split(","); %>
+            <% for(skill in skills) { %>
+              <div>
+
+                <label for="" class="form-label"> Skill </label>
+                <input value="<%= skills[skill]%>" name="data[skills][<%=skill%>]" class="form-control" type="text" required>
+                <i class="fa-solid fa-trash" onclick="removeField()"> </i>
+                <br>
+              </div>
+            <% } %>
+            
+        </div>
+        <!-- block end -->
+
+    
+        <!-- passing data only -->
+        <% for(obj in object) { %>
+          <input type="text" style="display: none;" name="data[<%=obj%>]" value="<%=object[obj]%>">
+        <% } %>
+    
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit"> Next </button>
+        </div>
+     </form>
+
+
+
+     <% } %>
+
+</div>
+
+
+
+<div class="addmore_outer"> 
+    <div class="addmore">
+        <div class="addmore_text"> <i class="fa-solid fa-plus"></i> Add Skills </div> 
+    </div>
+</div>
+
+<div class="space">
+
+</div>
+
+
+
+<script>
+    let exp = document.querySelector(".form4_div");
+    let btn = document.querySelector(".addmore");
+ 
+    
+    function removeField(event) {
+         if(event.target.nodeName == "I") {
+             event.target.parentElement.remove();
+         } 
+     }
+
+     exp.addEventListener('click', (event) => {
+         if(event.target.nodeName == "I") {
+            event.target.parentElement.remove();
+        } 
+    });
+
+ 
+    btn.addEventListener('click', () => {
+         let main = document.createElement("div");
+         let input1 = document.createElement("input");
+         let br = document.createElement("br");
+         let cnt = 0;
+ 
+         input1.name = `data[skills][${cnt}]`;
+         cnt++;
+ 
+         let label1 = document.createElement("label");
+
+         label1.className = "form-label";
+         label1.innerHTML = "Skill";
+ 
+         input1.className = "form-control";
+
+ 
+         //icon 
+         let icon = document.createElement("i");
+         icon.classList.add("fa-solid");
+         icon.classList.add("fa-trash");
+         let deleteBtn = document.querySelector(".form4_div");
+ 
+            
+         deleteBtn.addEventListener("click", removeField);   
+ 
+         main.appendChild(label1);
+         main.appendChild(input1);
+         main.appendChild(icon);
+         main.appendChild(br);
+         input1.required = true;
+ 
+         exp.appendChild(main);
+ 
+    });
+
+ 
+ </script>
+
+<!-- footer  -->
+<%- include("../Boilerplate/footer.ejs") %>

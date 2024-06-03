@@ -1,0 +1,45 @@
+<!-- nav Bar  -->
+<%- include("./Boilerplate/navbar.ejs") %>
+
+
+<div class="form_heading"> <h2> Login Form (Note :- You must be logged in to view the resume )</h2> </div>
+
+
+<div class="container form_div">
+
+    <form action="/login" method="POST" class="row g-3 needs-validation" novalidate>
+
+           <!-- User Name -->
+        <div class="col-md-12">
+            <label for="validationCustom01" class="form-label"> Username </label>
+            <input type="text" class="form-control" name="username" id="validationCustom01" placeholder="username" required> 
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+        </div>
+
+
+        <!-- Password -->
+        <div class="col-md-12">
+            <label for="validationCustom01" class="form-label">Password</label>
+            <input type="password" class="form-control" placeholder="Password"  name="password" id="validationCustom01" required> 
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+        </div>
+
+
+       
+        
+        <button class="btn btn-success"> Login </button>
+
+      <h4> <a href="/signup"> Signup  </a> </h4>
+    </form>
+
+</div>
+
+
+
+
+<!-- footer  -->
+<%- include("./Boilerplate/footer.ejs") %>

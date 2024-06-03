@@ -1,0 +1,152 @@
+<!-- nav Bar  -->
+<%- include("../Boilerplate/navbar.ejs") %>
+
+<div class="form_heading"> 
+    <% if(edit) { %>
+      <h2> Certification and Achievements (Edit Mode)</h2>
+    <% } else { %>
+      <h2> Certification and Achievements </h2>
+    <% } %> 
+</div>
+
+
+<div class="resume_outer">
+
+    <% if(!edit) { %>
+  
+      <!-- <form action="" method="POST" class="row g-3 needs-validation" novalidate> -->
+      <form action="/addResume" method="POST" class="row g-3 needs-validation" novalidate>
+    
+        <!-- Block started  -->
+        <div class="form5_div">
+          
+        </div>
+        <!-- block end -->
+
+    
+        <!-- passing data only -->
+        <% for(obj in object) { %>
+          <input type="text" style="display: none;" name="data[<%=obj%>]" value="<%=object[obj]%>">
+        <% } %>
+    
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Save and Next</button>
+        </div>
+    </form>
+
+   <% } else { %>
+
+    <form action="/edit/<%=resumeData._id%>?_method=PUT" method="POST" class="row g-3 needs-validation" novalidate>
+
+      <!-- Block started  -->
+      <div class="form5_div">
+          
+         <% let arr = resumeData.certificate.toString().split(","); %>
+         <% for(num in arr) { %>
+
+            <div>
+              <label for="" class="form-label"> Certificate </label>
+              <input value="<%= arr[num]%>" name="data[certificate][<%=num%>]" class="form-control" type="text" required>
+              <i class="fa-solid fa-trash" onclick="removeField()"> </i>
+              <br>
+            </div>
+
+          
+        <% } %>
+
+      </div>
+      <!-- block end -->
+
+  
+      <!-- passing data only -->
+      <% for(obj in object) { %>
+        <input type="text" style="display: none;" name="data[<%=obj%>]" value="<%=object[obj]%>">
+      <% } %>
+  
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit"> Edit and Next </button>
+      </div>
+   </form>
+
+
+   <% }%>
+
+</div>
+
+
+
+<div class="addmore_outer"> 
+    <div class="addmore">
+        <div class="addmore_text"> <i class="fa-solid fa-plus"></i> Add Certificate/Achievement </div> 
+    </div>
+</div>
+
+<div class="space">
+
+</div>
+
+
+
+
+<script>
+    let exp = document.querySelector(".form5_div");
+    let btn = document.querySelector(".addmore");
+ 
+    
+    function removeField(event) {
+      console.log(event);
+         if(event.target.nodeName == "I") {
+             event.target.parentElement.remove();
+         } 
+     }
+
+     exp.addEventListener('click', (event) => {
+         if(event.target.nodeName == "I") {
+            event.target.parentElement.remove();
+        } 
+    });
+
+ 
+    btn.addEventListener('click', () => {
+         let main = document.createElement("div");
+         let input1 = document.createElement("input");
+         let br = document.createElement("br");
+         let cnt = 0;
+ 
+         input1.name = `data[certificate][${cnt}]`;
+         cnt++;
+ 
+         let label1 = document.createElement("label");
+
+         label1.className = "form-label";
+         label1.innerHTML = "Certificate";
+ 
+         input1.className = "form-control";
+
+ 
+         //icon 
+         let icon = document.createElement("i");
+         icon.classList.add("fa-solid");
+         icon.classList.add("fa-trash");
+         let deleteBtn = document.querySelector(".form5_div");
+ 
+            
+         deleteBtn.addEventListener("click", removeField);   
+ 
+         main.appendChild(label1);
+         main.appendChild(input1);
+         main.appendChild(icon);
+         main.appendChild(br);
+         input1.required = true;
+ 
+         exp.appendChild(main);
+ 
+    });
+ 
+ </script>
+
+
+
+
+<!-- footer  -->
+<%- include("../Boilerplate/footer.ejs") %>

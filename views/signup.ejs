@@ -1,0 +1,58 @@
+<!-- nav Bar  -->
+<%- include("./Boilerplate/navbar.ejs") %>
+
+
+
+   <div class="form_heading"> <h2>  Sign up Form  </h2> </div>
+
+<div class="container form_div">
+
+        <form method="POST" action="/signup" class="row g-3 needs-validation" novalidate>
+
+
+               <!-- User Name -->
+               <div class="col-md-4">
+                <label for="validationCustom01" class="form-label"> Username </label>
+                <input type="text" class="form-control" placeholder="username" name="username" id="validationCustom01" required>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+
+   
+
+               
+            <!-- Email -->
+            <div class="col-md-4">
+                <label for="validationCustom01" class="form-label">Email</label>
+                <input type="email" class="form-control" placeholder="Email" name="email" id="validationCustom01" required> 
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+            </div>
+
+
+
+            <!-- Password -->
+            <div class="col-md-4">
+                <label for="validationCustom01" class="form-label">Password</label>
+                <input type="password" class="form-control"  placeholder="Enter your strong password here" name="password" id="validationCustom01" required> 
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+            </div>
+
+
+           
+           
+    
+            <button class="btn btn-success"> SignUp </button>
+            <h4> <a href="/login"> Login  </a> </h4>
+        </form>
+
+</div>
+
+
+
+<!-- footer  -->
+<%- include("./Boilerplate/footer.ejs") %>

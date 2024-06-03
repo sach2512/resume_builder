@@ -1,0 +1,178 @@
+<!-- nav Bar  -->
+<%- include("../Boilerplate/navbar.ejs") %>
+
+<div class="form_heading">
+  <% if(edit) { %>
+      <h2>  Tell us about your Experiance (Edit Mode)</h2>
+  <% } else { %>
+      <h2>  Tell us about your Experiance  </h2>
+  <% } %>
+</div>
+
+
+ <div class="resume_outer">
+   
+
+    <% if(!edit) { %>
+        <!-- form to create resume start -->
+        <form action="/form4" class="row g-3 needs-validation" novalidate>
+
+          <!-- Block started  -->
+          <div class="form3_div">
+            
+          </div>
+          <!-- block end -->
+
+          <div class="space">
+
+          </div>
+
+          <!-- passing data only -->
+          <% for(obj in object) { %>
+            <input type="text" style="display: none;" name="data[<%=obj%>]" value="<%=object[obj]%>">
+          <% } %>
+
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit"> Next </button>
+          </div>
+
+        </form>
+         <!-- form to create resume end -->
+
+    <% } else { %>
+
+       <!-- form to edit resume start -->
+
+
+       <form action="/form4" class="row g-3 needs-validation" novalidate>
+
+        <!-- Block started  -->
+        <div class="form3_div">
+          <% if(resumeData && resumeData.Experiance[0].split(",")) { %>
+            <% let arr = resumeData.Experiance[0].split(",") %>
+           <% let arr_month = resumeData.Experiance_month[0].split(",") %>
+            <% for(num in arr) { %>
+                <div>
+
+                  <label for="" class="form-label">Company Name</label>
+                  <input name="data[Experiance][<%=num%>]"  value="<%=arr[num]%>" type="text" class="form-control">
+                  
+                  <label for="" class="form-label"> Experiance in Months </label>
+                  <input name="data[Experiance_month][<%=num%>]" value="<%=arr_month[num]%>" type="number" class="form-control" required>
+
+                  <i class="fa-solid fa-trash" onclick="removeField()"> </i>
+                  
+                  <br>
+                </div>  
+            <% } %>
+          <% } %>
+
+        </div>
+        <!-- block end -->
+
+        <!-- passing data only -->
+        <% for(obj in object) { %>
+          <input type="text" style="display: none;" name="data[<%=obj%>]" value="<%=object[obj]%>">
+        <% } %>
+
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit"> Next </button>
+        </div>
+
+      </form>
+
+
+
+
+        <!-- form to edit resume end -->
+
+    <% } %>
+ </div>
+
+
+
+<div class="addmore_outer"> 
+  <div class="addmore">
+      <div class="addmore_text"> <i class="fa-solid fa-plus"></i> Add experiance </div> 
+  </div>
+</div>
+
+<div class="space">
+
+</div>
+
+
+
+<script>
+   let exp = document.querySelector(".form3_div");
+   let btn = document.querySelector(".addmore");
+
+   
+   function removeField(event) {
+        if(event.target.nodeName == "I") {
+            event.target.parentElement.remove();
+        } 
+    }
+
+    exp.addEventListener('click', (event) => {
+         if(event.target.nodeName == "I") {
+            event.target.parentElement.remove();
+        } 
+    });
+
+   btn.addEventListener('click', () => {
+        let main = document.createElement("div");
+        let input1 = document.createElement("input");
+        let input2 = document.createElement("input");
+        let br = document.createElement("br");
+        let cnt = 0;
+
+        input1.name = `data[Experiance][${cnt}]`;
+        input2.name = `data[Experiance_month][${cnt}]`;
+        cnt++;
+
+        let label1 = document.createElement("label");
+        let label2 = document.createElement("label");
+
+        label1.className = "form-label";
+        label1.innerHTML = "Company Name";
+
+        label2.className = "form-label";
+        label2.innerHTML = "Experiance in Months";
+
+        input1.className = "form-control";
+        input2.className = "form-control";
+
+        input2.type = "number";
+
+        //icon 
+        let icon = document.createElement("i");
+        icon.classList.add("fa-solid");
+        icon.classList.add("fa-trash");
+        let deleteBtn = document.querySelector(".form3_div");
+
+           
+        deleteBtn.addEventListener("click", removeField);   
+
+        main.appendChild(label1);
+        main.appendChild(input1);
+        main.appendChild(label2);
+        main.appendChild(input2);
+        main.appendChild(icon);
+        main.appendChild(br);
+        input1.required = true;
+        input2.required = true;
+
+        exp.appendChild(main);
+
+
+
+   });
+
+
+
+</script>
+
+
+<!-- footer  -->
+<%- include("../Boilerplate/footer.ejs") %>

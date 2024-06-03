@@ -1,0 +1,212 @@
+<!-- nav Bar  -->
+<%- include("../Boilerplate/navbar.ejs") %>
+
+<div class="form_heading">
+    <% if(edit) { %>
+        <h2>  Tell us about your self (Edit Mode)</h2>
+    <% } else { %>
+      <h2> Tell us about your self </h2>
+    <% } %>
+</div>
+
+
+    <div class="resume_outer">
+          
+    <% if(!edit) { %>
+         
+        <!-- form to create new resume -->
+        <form action="/form2" class="row g-3 needs-validation" novalidate>
+            <div class="col-md-4">
+              <label for="validationCustom01" class="form-label">First name</label>
+              <input name="data[name]" type="text" class="form-control" id="validationCustom01" placeholder="eg: Ganesh" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="validationCustom02" class="form-label">Last name</label>
+              <input name="data[sirname]" type="text" class="form-control" id="validationCustom02" placeholder="eg: Dandekar" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="validationCustomUsername" class="form-label">Email</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                <input name="data[email]" type="email" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="Email" required>
+                <div class="invalid-feedback">
+                  Please choose a email.
+                </div>
+              </div>
+            </div>
+  
+            <!-- Phone number -->
+            <div class="col-md-4">
+              <label for="validationCustomUsername" class="form-label"> Phone </label>
+              <div class="input-group has-validation">
+                <input name="data[phone]" type="number" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="Mo :-" required>
+                <div class="invalid-feedback">
+                  Please choose a Phone Number.
+                </div>
+              </div>
+            </div>
+
+             <!-- Image -->
+             <div class="col-md-4">
+              <label for="validationCustomUsername" class="form-label"> Image URL </label>
+              <div class="input-group has-validation">
+                <input name="data[URL]" type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="URL :-">
+                <div class="invalid-feedback">
+                  Please choose a URL.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="validationCustom03" class="form-label">City</label>
+              <input name="data[city]" type="text" class="form-control" id="validationCustom03" placeholder="eg: Mumbai" required>
+              <div class="invalid-feedback">
+                Please provide a valid city.
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="validationCustom04" class="form-label">State</label>
+              <input name="data[state]" type="text" class="form-control" id="validationCustom03" placeholder="eg: Maharashtra" required>
+              <div class="invalid-feedback">
+                Please select a valid state.
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="validationCustom05" class="form-label">Zip</label>
+              <input name="data[zip]" type="text" class="form-control" id="validationCustom05" required>
+              <div class="invalid-feedback">
+                Please provide a valid zip.
+              </div>
+            </div>
+
+            <!-- date of birth -->
+            <div class="col-md-3">
+                <label for="validationCustom05" class="form-label">DOB</label>
+                <input name="data[DOB]" type="date" class="form-control" id="validationCustom05">
+                <div class="invalid-feedback">
+                  Please provide a valid DOB.
+                </div>
+            </div>
+        
+
+            <div class="col-12">
+              <button class="btn btn-primary" type="submit"> Next </button>
+            </div>
+        </form>
+        <!-- form to create new resume end -->
+
+
+
+
+
+    <% } else { %>
+        <!-- form to edit resume -->
+        <form action="/form2" class="row g-3 needs-validation" novalidate>
+          <div class="col-md-4">
+            <label for="validationCustom01" class="form-label">First name</label>
+            <input value="<%=resumeData.name%>"  name="data[name]" type="text" class="form-control" id="validationCustom01" placeholder="eg: Ganesh" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Last name</label>
+            <input value="<%=resumeData.sirname%>" name="data[sirname]" type="text" class="form-control" id="validationCustom02" placeholder="eg: Dandekar" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <label for="validationCustomUsername" class="form-label">Email</label>
+            <div class="input-group has-validation">
+              <span class="input-group-text" id="inputGroupPrepend">@</span>
+              <input value="<%=resumeData.email%>" name="data[email]" type="email" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="Email" required>
+              <div class="invalid-feedback">
+                Please choose a email.
+              </div>
+            </div>
+          </div>
+
+          <!-- Phone number -->
+          <div class="col-md-4">
+            <label for="validationCustomUsername" class="form-label"> Phone </label>
+            <div class="input-group has-validation">
+              <input value="<%=resumeData.phone%>" name="data[phone]" type="number" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="Mo :-" required>
+              <div class="invalid-feedback">
+                Please choose a Phone Number.
+              </div>
+            </div>
+          </div>
+
+           <!-- Image -->
+           <div class="col-md-4">
+            <label for="validationCustomUsername" class="form-label"> Image URL </label>
+            <div class="input-group has-validation">
+              <input value="<%=resumeData.URL%>" name="data[URL]" type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="URL :-">
+              <div class="invalid-feedback">
+                Please choose a URL.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="validationCustom03" class="form-label">City</label>
+            <input value="<%=resumeData.city%>" name="data[city]" type="text" class="form-control" id="validationCustom03" placeholder="eg: Mumbai" required>
+            <div class="invalid-feedback">
+              Please provide a valid city.
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <label for="validationCustom04" class="form-label">State</label>
+            <input value="<%=resumeData.state%>" name="data[state]" type="text" class="form-control" id="validationCustom03" placeholder="eg: Maharashtra" required>
+            <div class="invalid-feedback">
+              Please select a valid state.
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <label for="validationCustom05" class="form-label">Zip</label>
+            <input value="<%=resumeData.zip%>" name="data[zip]" type="text" class="form-control" id="validationCustom05" required>
+            <div class="invalid-feedback">
+              Please provide a valid zip.
+            </div>
+          </div>
+
+          <!-- date of birth -->
+          <div class="col-md-3">
+              <label for="validationCustom05" class="form-label">DOB</label>
+              <input value="<%=resumeData.DOB%>" name="data[DOB]" type="date" class="form-control" id="validationCustom05">
+              <div class="invalid-feedback">
+                Please provide a valid DOB.
+              </div>
+          </div>
+
+
+          <!-- passing edit to next form -->
+          <input type="text" style="display: none;" name="data[edit]" value="<%=true%>">      
+
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit"> Next </button>
+          </div>
+      </form>
+      <!-- form to edit resume end -->
+     
+
+    <% } %>
+    </div>
+
+<!-- footer  -->
+<%- include("../Boilerplate/footer.ejs") %>

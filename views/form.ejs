@@ -1,0 +1,186 @@
+<!-- nav Bar  -->
+<%- include("./Boilerplate/navbar.ejs") %>
+
+    <div class="form_heading"> <h2> Create your Resume </h2> </div>
+
+    <div class="container form_div">
+        <form method="POST" action="/showResume" class="row g-3 needs-validation" novalidate>
+
+            <!-- full name -->
+            <div class="col-md-4">
+              <label for="validationCustom01" class="form-label">Full name</label>
+              <input type="text" class="form-control" name="resume[name]" id="validationCustom01" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+
+            <!-- contact no  -->
+            <div class="col-md-4">
+              <label for="validationCustom02" class="form-label">Contact No</label>
+              <input type="number" class="form-control" name="resume[contact]" id="validationCustom02" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            
+
+            <!-- email  -->
+            <div class="col-md-4">
+              <label for="validationCustomUsername" class="form-label">email</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                <input type="email" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend"  name="resume[email]" required>
+                <div class="invalid-feedback">
+                  Please choose a username.
+                </div>
+              </div>
+            </div>
+
+
+              <!-- University (College) -->
+            <div class="col-md-6">
+                <label for="validationCustom03" class="form-label">University</label>
+                <input type="text" class="form-control" id="validationCustom03" name="resume[university]" placeholder="University" required>
+                <div class="invalid-feedback">
+                  Please provide a valid University.
+                </div>
+            </div>
+  
+
+            <!-- education (Branch) -->
+            <div class="col-md-6">
+                <label for="validationCustom03" class="form-label">Education (Branch)</label>
+                <input type="text" class="form-control" id="validationCustom03" name="resume[degree]" placeholder="Degree" required>
+                <div class="invalid-feedback">
+                  Please provide a valid Branch.
+                </div>
+            </div>
+
+             <!-- CGPA (Percentage) -->
+             <div class="col-md-6">
+                <label for="validationCustom03" class="form-label"> CGPA (Percentage)</label>
+                <input type="number" class="form-control" id="validationCustom03" name="resume[percentage]" placeholder="CGPA" required>
+                <div class="invalid-feedback">
+                  Please provide a valid Branch.
+                </div>
+             </div>
+
+
+            <!-- Country -->
+            <div class="col-md-6">
+               <label for="validationCustom03" class="form-label"> Country </label>
+                <input type="text" class="form-control" id="validationCustom03" name="resume[country]"  required>
+                <div class="invalid-feedback">
+                  Please provide a valid Country.
+                </div>
+            </div>
+
+            <!-- State -->
+            <div class="col-md-6">
+               <label for="validationCustom03" class="form-label"> State  </label>
+                <input type="text" class="form-control" id="validationCustom03" name="resume[state]" placeholder="State" required>
+                <div class="invalid-feedback">
+                  Please provide a valid State.
+                </div>
+            </div>
+
+
+            <!-- Zip code -->
+            <div class="col-md-3">
+                <label for="validationCustom05" class="form-label">Zip</label>
+                <input type="text" class="form-control" id="validationCustom05" name="resume[zip]" required>
+                <div class="invalid-feedback">
+                  Please provide a valid zip.
+                </div>
+            </div>
+  
+
+
+           <!-- Gender  -->
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="validationFormCheck2" name="resume[gender]" required>
+                <label class="form-check-label" for="validationFormCheck2">Male</label>
+              </div>
+              <div class="form-check mb-3">
+                <input type="radio" class="form-check-input" id="validationFormCheck3" name="resume[gender]" required>
+                <label class="form-check-label" for="validationFormCheck3">Female</label>
+                <div class="invalid-feedback">More example invalid feedback text</div>
+            </div>
+
+
+        
+            <!-- Project one -->
+            <div class="mb-3">
+                <label for="validationTextarea" class="form-label">First Project (if dont have write NA)</label>
+                <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" name="resume[project_one]" required></textarea>
+                <div class="invalid-feedback">
+                  Describe your Project Here...
+                </div>
+            </div>
+
+            <!-- Project Two -->
+            <div class="mb-3">
+                <label for="validationTextarea" class="form-label">Second Project (if dont have write NA)</label>
+                <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" name="resume[project_two]" required></textarea>
+                <div class="invalid-feedback">
+                    Describe your Project Here...
+                </div>
+            </div>
+
+             <!-- Skills -->
+             <div class="mb-3">
+                <label for="validationTextarea" class="form-label">Skills (give ',' between two skills .. eg :- JAVA, C++ , etc ..) </label>
+                <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" name="resume[skills]" required></textarea>
+                <div class="invalid-feedback">
+                  Please enter a message in the textarea.
+                </div>
+            </div>
+
+            <!-- Achievements -->
+             <div class="mb-3">
+                <label for="validationTextarea" class="form-label"> Mention your Achievements (if not use NA)</label>
+                <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" name="resume[achievements]" required></textarea>
+                <div class="invalid-feedback">
+                  Please enter a message in the textarea.
+                </div>
+            </div>
+
+            <!-- Experiance -->
+            <div class="mb-3">
+              <label for="validationTextarea" class="form-label"> Mention your Experiance (if not use NA)</label>
+              <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" name="resume[experiance]" required></textarea>
+              <div class="invalid-feedback">
+                Please enter a experiance in the textarea.
+              </div>
+            </div>
+            
+
+ 
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox"  id="invalidCheck" required>
+                <label class="form-check-label" for="invalidCheck">
+                  Agree to terms and conditions
+                </label>
+                <div class="invalid-feedback">
+                  You must agree before submitting.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <button class="btn btn-success" type="submit"> Create my Resume</button>
+            </div>
+          </form>
+
+    </div>
+
+  
+    <br> 
+
+
+    
+
+<!-- footer  -->
+<%- include("./Boilerplate/footer.ejs") %>

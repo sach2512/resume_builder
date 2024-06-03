@@ -1,0 +1,41 @@
+<!-- nav Bar  -->
+<%- include("./Boilerplate/navbar.ejs") %>
+
+<div class="allResumes">
+
+    <% let cnt = 0; %>
+    <% for(resume in AllResumes) { %>
+        <% let owns = AllResumes[resume].owner %>
+        <% if(owner.equals(owns)) { %>
+            <% cnt++; %>
+        <div class="card_resume">
+                <div class="card_resume_name"> name : <%= AllResumes[resume].name %> </div>
+                <div class="allBtns">
+                    <div class=""> <a href="/edit/<%=AllResumes[resume]._id%>" class="btn btn-success"> Edit </a> </div>
+
+                    <div>
+                        <form action="/delete/<%=AllResumes[resume]._id%>?_method=DELETE" method="POST">
+                            <button type="submit" class="btn btn-danger" > Delete </button> 
+                        </form>
+                    </div>
+
+                    <div> <a class="btn btn-warning" href="/showResume/<%=AllResumes[resume]._id%>"> Show</a> </div>
+                </div>
+        </div>
+        
+        <% } %>
+    <% } %>
+
+
+    <% if(cnt == 0) { %>
+        <div class="form_heading">
+            <h2> first Create Resumes then they are visible here </h2>
+        </div>
+
+    <% } %>
+
+</div>
+
+
+<!-- footer  -->
+<%- include("./Boilerplate/footer.ejs") %>

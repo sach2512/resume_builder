@@ -1,0 +1,244 @@
+<!-- nav Bar  -->
+<%- include("../Boilerplate/navbar.ejs") %>
+
+
+<div class="form_heading">
+    <% if(edit) { %>
+        <h2> Tell us about your Education (Edit Mode)</h2>
+    <% } else { %>
+        <h2> Tell us about your Education  </h2>
+    <% } %>
+  
+</div>
+
+
+ <div class="resume_outer">
+
+    <% if(!edit) { %>
+        <!-- form to create resume start -->
+        <form action="/form3" class="row g-3 needs-validation" novalidate>
+            <div class="col-md-4">
+            <label for="validationCustom01" class="form-label">School Name</label>
+            <input name="data[school]" type="text" class="form-control" id="validationCustom01"  required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            </div>
+            <div class="col-md-4">
+            <label for="validationCustom02" class="form-label"> Start Date</label>
+            <input type="Date" class="form-control" id="validationCustom02">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            </div>
+
+            <div class="col-md-4">
+            <label for="validationCustom02" class="form-label"> End Date</label>
+            <input type="Date" class="form-control" id="validationCustom02" >
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            </div>
+
+
+        <!-- Block started  -->
+        <div class="form2_div">
+
+        
+        </div>
+        <!-- block end -->
+
+
+            <div class="addmore_outer">
+                <div class="addmore">
+                    <div class="addmore_text"> <i class="fa-solid fa-plus"></i> Add one more </div> 
+                </div>
+            </div>
+
+            <div class="space">
+
+            </div>
+
+            <!-- Transfering data to next page -->
+            <% for(obj in object) { %>
+                <input type="text" style="display: none;" name="data[<%=obj%>]" value="<%=object[obj]%>">
+            <% } %> 
+            <!-- transfering data end -->
+
+            <div class="col-12">
+            <button class="btn btn-primary" type="submit"> Next </button>
+            </div>
+        </form>
+        <!-- form to create resume end -->
+ 
+     <% } else if(resumeData) { %>
+
+
+        <!-- form to edit resume start -->
+        <form action="/form3" class="row g-3 needs-validation" novalidate>
+            <div class="col-md-4">
+            <label for="validationCustom01" class="form-label">School Name</label>
+            <input  value="<%=resumeData.school%>" name="data[school]" type="text" class="form-control" id="validationCustom01"  required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            </div>
+            <div class="col-md-4">
+            <label for="validationCustom02" class="form-label"> Start Date</label>
+            <input type="Date" class="form-control" id="validationCustom02">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            </div>
+
+            <div class="col-md-4">
+            <label for="validationCustom02" class="form-label"> End Date</label>
+            <input type="Date" class="form-control" id="validationCustom02" >
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            </div>
+
+
+        <!-- Block started  -->
+        <div class="form2_div">
+             
+            <% if(resumeData && resumeData.university) { %>
+                <% let arr = resumeData.university[0].toString().split(",") %>
+
+              
+                <% for(num in arr) { %>
+                    <div class="div">
+                            <label class="form-label"> University Name</label>
+                            <input value="<%=arr[num]%>" type="text" name="data[university][<%=num%>]" class="form-control" required>
+
+                            <label class="form-label"> Start Date </label>
+                            <input type="date" class="form-control">
+
+                            <label class="form-label"> End Date </label>
+                            <input type="date" class="form-control">
+
+                            <i class="fa-solid fa-trash" onclick="removeField()"> </i>
+                    </div>
+                 <% } %>
+            <% } %>
+        
+        </div>
+        <!-- block end -->
+
+
+            <div class="addmore_outer">
+                <div class="addmore">
+                    <div class="addmore_text"> <i class="fa-solid fa-plus"></i> Add one more </div> 
+                </div>
+            </div>
+
+            <div class="space">
+
+            </div>
+
+            <!-- Transfering data to next page -->
+            <% for(obj in object) { %>
+                <input type="text" style="display: none;" name="data[<%=obj%>]" value="<%=object[obj]%>">
+            <% } %> 
+            <!-- transfering data end -->
+
+            <div class="col-12">
+            <button class="btn btn-primary" type="submit"> Next </button>
+            </div>
+        </form>
+        <!-- form to edit resume end -->
+        
+        
+
+     <% } %>
+
+    </div>
+
+
+
+
+
+
+<!-- Java Script  -->
+<script>
+    let btn = document.querySelector(".addmore");
+    let form = document.querySelector(".form2_div");
+    let cnt = 1;
+
+    function removeField(event) {
+        if(event.target.nodeName == "I") {
+            event.target.parentElement.remove();
+        } 
+    }
+
+    form.addEventListener('click', (event) => {
+         if(event.target.nodeName == "I") {
+            event.target.parentElement.remove();
+        } 
+    });
+
+
+    btn.addEventListener('click', () => {
+        let main = document.createElement("div");
+        let input1 = document.createElement("input");
+        let input2 = document.createElement("input");
+        let input3 = document.createElement("input"); 
+
+        input1.name = `data[university][${cnt}]`;
+        cnt++;
+
+        let label1 = document.createElement("label");
+        let label2 = document.createElement("label");
+        let label3 = document.createElement("label");
+
+        label1.className = "form-label";
+        label1.innerHTML = "University Name";
+
+        label2.className = "form-label";
+        label2.innerHTML = "Start Date";
+
+        label3.className = "form-label";
+        label3.innerHTML = "End date";
+
+        input1.className = "form-control";
+        input2.className = "form-control";
+        input3.className = "form-control";
+
+        input2.type = "date";
+        input3.type = "date";   
+
+        let icon = document.createElement("i");
+        icon.classList.add("fa-solid");
+        icon.classList.add("fa-trash");
+        let deleteBtn = document.querySelector(".form2_div");
+
+        
+        deleteBtn.addEventListener("click", removeField);    
+
+        main.appendChild(label1);
+        main.appendChild(input1);
+        main.appendChild(label2);
+        main.appendChild(input2);
+        main.appendChild(label3);
+        main.appendChild(input3);
+        input1.required = true;
+
+
+        main.appendChild(icon);
+        form.appendChild(main);
+    });
+
+
+   
+
+
+
+
+
+</script>
+
+
+
+<!-- footer  -->
+<%- include("../Boilerplate/footer.ejs") %>

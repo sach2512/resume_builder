@@ -1,0 +1,190 @@
+<!-- nav Bar  -->
+<%- include("./Boilerplate/navbar.ejs") %>
+
+
+<div class="resume_outer template_outer">
+     <div class="resume_template finalResume">
+
+    <% if(resume) { %>
+        <!-- Blue Section start-->
+        <div class="blue_sec">
+            
+            <div class="template_pic">
+              <% if(resume.URL === "") { %>
+                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALgAAACUCAMAAAAXgxO4AAAAMFBMVEXk5ueutLfr7e6lrK/n6eqqsLTKztC3vL+xt7rf4eLZ3N3Hy83V2NrAxcfS1tfQ09Vgm6FFAAAEYElEQVR4nO2cyY7DIAxAA5g9JP//twNJO93SKYuLGSnvVPX0ZBmzOtN0cnJycnJyCCSoJUrYbK1blI+ss73+NTgw2cUHJoXcEZIFFe0HV+d2DUZK9ohkOqwjq/PJG/Zs/evugVMLvgH8sfTVXaoRcx2mxfzpndTNMlzCgA2ftDf1YMcy5/PHcF/M9TySOags6511IPOsNPkNuh/GvMibMTGIORR6p5hTOyc+VO9jFH3Mi8blLeYLtTnMNd5xBeCozXWVeJxEabV58cD8NQ+USy6YRaV3hDRZ6rUZ03Ta4FvE6Woi2MqReQ25JRKfVO3I3JErkXdjwCM03rC2BTyutmjW5tAccKZJarltDXjMcorhyRuH5gZFReSm3ZsmVxACzkz/XIEFQ5xg58wDhjfrv/3k7cWQpcVtb+/qHcQT/dcrDqOoJPHOuQIzjrjpvZ2AFcWbsd7LlbpTiQN6n1NgiXdfkzfu2k7xcvF/mypY4t0HJ1I5lN3L4YIj3r2OT/915pwsirjsv8hC2OMn+i9rkdbjBBsJnBmIYJvvUDbLrrv3BAjejOJCBWW3THGf0nSNcqH7vLnTHnBJcuhZdaX86O1pbt5cc8Cp7lKqLzkv3gSnQRvNS1uCIn6hadonC3gMedPs2X9Fe6P+Kp9RHNTe0xBxSu24g6udPgXxg5XaWUgq6oe2ddfLhBXlClQdlNO9P7gzr7mopZt67qio5oO8DIbcF8E7knLmecLpAnM9jneqLbnmMgwwLu/IfWArBnic+gh3GQVdaks977wCk/owRqVWw7VIbIDzb5ppNm2jBqmCr8BklRFH7lKYdezuK+DWv64BTLB8ZOsdDnYN+oZf7bA9V89AjK91Cbv9/i8Af2R8cx5zwrpVhRBzxURipoTg18VN0Z/a7gCImWGtU8FIIcRzW2Tq6hSpvXBx1k7D1BYAiEH2yfljk55IjZ2zG6GjloOLJeS19/S9fOpKVfNEmjipaOuqa0NjwkwWdrDqjxk+I/TB9U/4OBjnkJ8fbxBGua7qEJdTull7C7sJ/ZpqgbtQtMn8oK7XPtmemnzRtHdMhxe2UftjuS5HsPm7CQPWY0f7gvxmeQRQJccQpXytgZwjvQN+i1m+sY6M4f5itHfkF54IZ34woNWcLdjeZceD9ebSo5YXtCfAGaCmS480uYF1uAjTN4vgAUj3WpB/EosGxhKgtduUzBznYWQpcmne2vUpgy+IVvP++X1Bto3QvnXwgZYrrp7zzgsN74Vhpot3Mg+VIQfbcvqAgKgsipxsYF6RVcsWpE7TJnRVyElmnicqkgVwOmQbKa8sdc9Q0Kl40U849dxT3EZuqY0vyMK7//aXymgU5sow3mUhb/8CCR6mRBzluxJIFK1vEb5AgkfBs36k5iQkCj5LhdTHhoTJb12h2SC/JbuuYH3lAIn8DQXpju2A7Ad/A02bGzr7Je4QK9ob2ft9kkO3v8gtK86IscjeB/HBoH/dcnJycnKCzQ9adj6sh+qLtQAAAABJRU5ErkJggg==" alt="">
+               <% } else { %>
+                  <img src="<%=resume.URL%>" alt="Profile_image">
+                <% } %>
+            </div>
+
+            <div class="template_name">
+                <h2> <%= resume.name %> </h2>
+            </div>
+            
+                <!-- Contact Sec  -->
+                <div class="contact_sec">
+                    <div class="contact_sec_heading">
+                      Contact
+                    </div>
+
+                    <!-- Address  -->
+                    <div class="small_heading">
+                      Address
+                    </div>
+
+                    <p class="small_heading_light"> <%= resume.city %> , <%= resume.state %> </p>
+
+                    <!-- Phone -->
+                    <div class="small_heading">
+                      Phone
+                    </div>
+
+                    <p class="small_heading_light"> <%= resume.phone %> </p>
+
+
+                     <!-- Email -->
+                    <div class="small_heading">
+                      Email
+                    </div>
+
+                    <p class="small_heading_light"> <span style="font-size: 10px"> <%= resume.email %> </span> </p>
+
+                </div>
+
+
+                
+                <!-- Skill Section  -->
+                <% if(resume.skills)  { %>
+                  <div class="skill_sec white">
+                      <div class="contact_sec_heading">
+                          Skills
+                      </div>
+                
+                      <% let skills = resume.skills.toString().split(","); %>
+                      <% for(skill in skills) { %>
+                        <p class="small_heading_light"> <%= skills[skill] %> </p>
+                      <% } %>
+                  </div>
+               <% } %>
+       </div>
+       <!-- Blue Section end -->
+
+       <!-- White sec start -->
+        <div class="white_sec">
+             
+        
+          <!-- Experiance  -->
+          <% if(resume.skills)  { %>
+              <div class="white_sec_heading">
+                <hr>
+                <h4> Experiance </h4>
+                <hr>
+              </div>
+
+              <% let experiance = resume.Experiance.toString().split(","); %>
+              <% let exp_month = resume.Experiance_month.toString().split(","); %>
+              <% for(exp in experiance) { %>
+                <div class="white_sec_data">
+                    <div class="white_sec_data_left">
+                        <%= exp_month[exp] %> <span style="font-size: 12px">months</span>
+                    </div>
+
+                    <div class="white_sec_data_right">
+                        <%= experiance[exp] %>
+                    </div>
+                </div>
+              <% } %>
+            <% } %>
+            
+            <!-- Education  -->
+            <div class="white_sec_heading">
+              <hr>
+              <h4> Education </h4>
+              <hr>
+            </div>
+
+            <div class="white_sec_data">
+              <div class="white_sec_data_left">
+                   School Name
+              </div>
+
+              <div class="white_sec_data_right">
+                  <%= resume.school %>
+              </div>
+            </div>
+
+              <% if(resume.university) { %>
+                 
+                <% let universities = resume.university.toString().split(",") %>
+                <% for(uni in universities)  { %>
+
+                  <div class="white_sec_data">
+                    <div class="white_sec_data_left">
+                         University
+                    </div>
+      
+                    <div class="white_sec_data_right">
+                      <%=  universities[uni] %>
+                    </div>
+                  </div>
+                      
+                  
+                <% } %>
+
+              <% } %>
+           
+
+
+           <!-- Achievements  -->
+          <% if(resume.certificate)  { %>
+            <div class="white_sec_heading">
+              <hr>
+              <h4> Achievements </h4>
+              <hr>
+            </div>
+
+            <% let certificate = resume.certificate.toString().split(","); %>
+            <% for(certi in certificate) { %>
+
+                <div class="white_sec_data">
+                  <div class="white_sec_data_left">
+                      Certificate
+                  </div>
+
+                  <div class="white_sec_data_right">
+                      <%= certificate[certi] %>
+                  </div>
+                </div>
+            <% } %>
+          <% } %>
+           
+        </div>
+        <!-- White sec end -->
+
+    <% } %>
+     </div>
+ </div>         
+          
+
+
+        
+       
+
+    <div class="download-btn">
+      <button class="btn btn-success" id="download" onclick="printScreen()"> Download Resume </button>
+    </div>
+
+    <div class="space">
+
+    </div>
+
+
+    <script>
+      
+        function printScreen() {
+          print();
+        }
+    </script>
+   
+<!-- footer  -->
+<%- include("./Boilerplate/footer.ejs") %>
