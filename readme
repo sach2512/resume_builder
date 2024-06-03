@@ -1,5 +1,7 @@
 Node.js Resume Builder
-The Node.js Resume Builder is a web application that allows users to create, edit, and manage their resumes easily. Users can input their personal and professional information, customize the resume layout, and download the resume in PDF format. The application also provides user authentication using Passport.js, allowing users to securely access and manage their resumes.
+The Node.js Resume Builder is a web application that allows users to create, edit, and manage their resumes easily.
+Users can input their personal and professional information, customize the resume layout, and download the resume in PDF format. 
+The application also provides user authentication using Passport.js, allowing users to securely access and manage their resumes.
 
 Features
 Resume Creation: Users can input their personal details, education, work experience, skills, and other relevant information to create their resumes.
